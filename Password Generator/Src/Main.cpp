@@ -7,10 +7,12 @@ const char NoSymbols[] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQR
 int NoSymbols_length = sizeof(NoSymbols) - 1;
 
 bool Symbols;
+bool Numbers;
 int Length;
 
 std::string Generate()
 {
+    srand(time(0));
     std::string Password;
 
     if (Symbols == false)
@@ -31,29 +33,34 @@ std::string Generate()
     return Password;
 }
 
-int main()
+void Settings()
 {
-    srand(time(0));
-
     std::cout << "Enter the length of password: ";
     std::cin >> Length;
-    std::cout << "Should it contain symbols (y/n): ";
-    std::cin >> Symbols;
+    std::cout << "Should it contain symbols (true/false): ";
+    std::cin >> Symbols; 
+    std::cout << "Should it contain numbers (true/false): ";
+    std::cin >> Numbers;
     std::cout << "Generated password: ";
-    
+
     std::cout << Generate();
 
     std::cout << std::endl;
     std::cout << std::endl;
     std::cout << std::endl;
 
+    
+}
+
+int main()
+{
+    Settings();
+
     std::cout << "Press any key to start again . . ." << std::endl;
     system("pause >nul");
     system("cls");
-    main();
 
-    Length = NULL;
-    Symbols = NULL;
+    main();
 
     return 0;
 }
